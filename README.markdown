@@ -54,15 +54,15 @@ Perhaps the best advantage of bind is how it allows you to rapidly create  chang
 
 In lieu of full-fledged sphinx documentation (which will exist in the future, but is overkill right now), here's a brief overview of the bind API.
 
-##### class `bind.API` ######
+class `bind.API`
 
 The base class for bind APIs.
 
-####### `API.authenticate(username, password)` #######
+`API.authenticate(username, password)`
 
 Authenticate using basic HTTP authentication. This just sets up authentication, it doesn't perform any requests.
 
-##### Subclassing `API`
+##### Subclassing `API` #####
 
 Subclassing `API` is how you write your own API bindings with bind. You do so by defining class attributes for your subclass.
 
@@ -76,7 +76,7 @@ The other meaningful type of class attribute is an instance of `bind.Request`. E
 
 Finally, you can define methods and other attributes to your heart's content to provide conveniences to the programmer or the user. bind doesn't treat these attributes specially (or at all), so feel free to define any kind of attribute.
 
-###### class `bind.Request(pattern, method="GET", requires_auth=False, [base_url, request_callback, response_callback])
+class `bind.Request(pattern, method="GET", requires_auth=False, [base_url, request_callback, response_callback])
 
 An API call. In your subclass of `bind.API`, you'll define a number of instances of `Request` as class attributes that will represent API calls.
 
@@ -90,19 +90,19 @@ cannot be absolute paths, only relative.
  - `base_url` is the base URL for the request. This can override the `BASE_URL` attribute of the enclosing `API` subclass.
  - `request_callback` and `response_callback` are the functions that should be used to process requests and responses for this request, respectively. These arguments can override the enclosing `API` subclass's `REQUEST_CALLBACK` and `RESPONSE_CALLBACK` attributes (respectively) for the request.
 
-####### `Request.authenticate(username, password)` #######
+`Request.authenticate(username, password)`
 
 Authenticate the request using basic HTTP authentication. This justs sets up authentication, it doesn't perform any requests.
 
-###### `Request.set_base_url(url)` ######
+`Request.set_base_url(url)`
 
 Set the base URL for this request to `url`.
 
-###### `Request.request(body=None, headers={}. **parameters)` ######
+`Request.request(body=None, headers={}. **parameters)`
 
 Make the HTTP request described by the `Request` instance. `body` is the data to be sent to the server and `headers` is a dictionary containing headers to contain in the request.
 
-###### `Request.__call__(*args, **kw)` #######
+`Request.__call__(*args, **kw)`
 
 Alias for the `request()` method of a `Request` object. This is provided as a convenience so that class `Request` attributes of your API class can be called as methods.
 
