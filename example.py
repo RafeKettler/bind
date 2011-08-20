@@ -1,6 +1,5 @@
 from bind import API, Request
 from bind.callbacks import response_to_json, request_to_formdata
-from urllib import urlencode
 
 class GithubAPI(API):
     BASE_URL = "https://github.com/api/v2/json"
