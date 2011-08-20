@@ -76,7 +76,7 @@ The other meaningful type of class attribute is an instance of `bind.Request`. E
 
 Finally, you can define methods and other attributes to your heart's content to provide conveniences to the programmer or the user. bind doesn't treat these attributes specially (or at all), so feel free to define any kind of attribute.
 
-#### class `bind.Request(pattern, method="GET", requires_auth=False, [base_url, request_callback, response_callback]) ####
+#### class `bind.Request(pattern, method="GET", requires_auth=False, [base_url, request_callback, response_callback])` ####
 
 An API call. In your subclass of `bind.API`, you'll define a number of instances of `Request` as class attributes that will represent API calls.
 
