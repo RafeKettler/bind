@@ -64,7 +64,7 @@ API
     :members: authenticate
 
 .. autoclass:: bind.Request
-    :members: authenticate, set_base_url, request, __call__
+  :members: authenticate, set_base_url, request, __call__
 
 
 Callbacks

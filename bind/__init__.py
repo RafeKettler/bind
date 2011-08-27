@@ -66,6 +66,17 @@ class Request(object):
     def __init__(self, pattern, method="GET", base_url=None,
                  requires_auth=False, request_callback=None,
                  response_callback=None):
+        """
+        :param pattern: a URL pattern relative to your base URL
+        :param method: the HTTP method for the request.
+        :param requires_auth: whether or not the client must be authenticated
+        :param base_url: the base URL for the request
+        :param request_callback: a function to process the request
+        :param response_callback: a function to process the response
+
+        ``base_url``, ``request_callback``, and ``response_callback`` can
+        override ``BASE_URL``, ``REQUEST_CALLBACK``, or ``RESPONSE_CALLBACK``
+        for the enclosing ``API`` subclass."""
         self.requires_auth = requires_auth
         if self.requires_auth:
             self.username, self.password = None, None
