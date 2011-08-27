@@ -2,7 +2,7 @@
 
 bind is a framework for writing Python bindings for web services. The aim of bind is to make writing web service bindings fast and simple, and to make it easy for maintainers of bindings to keep up with constantly changing and growing APIs.
 
-Defining an API in bind is very similar to defining a database table in many popuplar Python ORMS like SQLAlchemy or the Django ORM. Here's a sample binding:
+Defining an API in bind is very similar to defining a database table in many popular Python ORMs like SQLAlchemy or the Django ORM. Here's a sample binding:
 
     from bind import Request, API
     
@@ -94,7 +94,7 @@ cannot be absolute paths, only relative.
 
 `Request.authenticate(username, password)`
 
-Authenticate the request using basic HTTP authentication. This justs sets up authentication, it doesn't perform any requests.
+Authenticate the request using basic HTTP authentication. This just sets up authentication, it doesn't perform any requests.
 
 `Request.set_base_url(url)`
 
