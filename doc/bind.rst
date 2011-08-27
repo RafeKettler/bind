@@ -16,7 +16,7 @@ GitHub page`_, extract it, change to the extracted directory, and run
 Usage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Defining an API in bind is very similar to defining a database table in many popuplar Python ORMS like SQLAlchemy or the Django ORM. Here's a sample binding::
+Defining an API in bind is very similar to defining a database table in many popular Python ORMs like SQLAlchemy or the Django ORM. Here's a sample binding::
 
     from bind import Request, API
     
