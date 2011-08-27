@@ -1,6 +1,6 @@
 # bind #
 
-bind is a framework for writing Python bindings for web services. The aim of bind is to make writing web service bindings fast and simple, and to make it easy for maintainers of bindings to keep up with constantly changing and growing APIs. Take a look at [the documentation](bind.readthedocs.org), you'll like what you see.
+bind is a framework for writing Python bindings for web services. The aim of bind is to make writing web service bindings fast and simple, and to make it easy for maintainers of bindings to keep up with constantly changing and growing APIs. Take a look at [the documentation](http://bind.readthedocs.org), you'll like what you see.
 
 Defining an API in bind is very similar to defining a database table in many popular Python ORMs like SQLAlchemy or the Django ORM. Here's a sample binding:
 
@@ -60,6 +60,6 @@ Forks/patches/contributions are always welcome. If you're working on fixing a bu
 
 ## Help ##
 
-Read [the docs](bind.readthedocs.org), check out [the example](http://github.com/RafeKettler/bind/master/example.py), send me a message on GitHub, or contact me directly at rafe.kettler AT gmail DOT COM.
+Read [the docs](http://bind.readthedocs.org), check out [the example](http://github.com/RafeKettler/bind/master/example.py), send me a message on GitHub, or contact me directly at rafe.kettler AT gmail DOT COM.
 
 
