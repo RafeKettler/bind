@@ -64,8 +64,8 @@ class URLPattern(object):
 class Request(object):
     """Represents a request to an API."""
     def __init__(self, pattern, method="GET", base_url=None,
-                 requires_auth=False, request_callback=lambda x, y: (x, y),
-                 response_callback=lambda x, y: (x, y)):
+                 requires_auth=False, request_callback=None,
+                 response_callback=None):
         self.requires_auth = requires_auth
         if self.requires_auth:
             self.username, self.password = None, None
@@ -73,6 +73,11 @@ class Request(object):
         self.pattern = URLPattern(pattern)
         self.http = httplib2.Http()
         self.method = "GET"
+        # If request_callback or response_callback arguments were not supplied,
+        # provide default callbacks that do nothing
+        default_callback = lambda x, y: (x, y)
+        request_callback = request_callback or default_callback 
+        response_callback = response_callback or default_callback
         # Callback attributes need to be staticmethods so that they don't
         # get passed self when called by an instance
         self.request_callback = staticmethod(request_callback)
@@ -109,12 +114,9 @@ class Request(object):
         return self.response_callback(response, content)
 
     def __call__(self, *args, **kw):
-        """Alias for self.request. Allows convenient API call methods:
-            
-            api = MyAPI()
-            # Instead of api.do_some_request.request(...)
-            api.do_some_request(param1=value) 
-        """
+        """Alias for self.request. Allows convenient API call methods, e.g.
+        ``myapi.do_some_request(*args, **kw)`` instead of
+        ``myapi.do_some_request.request(*args, **kw)``."""
         return self.request(*args, **kw)
 
 class API(object):
