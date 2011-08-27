@@ -6,6 +6,16 @@ bind is a framework for writing Python bindings for web services. The aim of bin
 Quickstart
 ------------------------
 
+Installation
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To install ``bind``, download a tarball or zip archive from `our
+GitHub page`_, extract it, change to the extracted directory, and run
+``python setup.py install``.
+
+Usage
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Defining an API in bind is very similar to defining a database table in many popuplar Python ORMS like SQLAlchemy or the Django ORM. Here's a sample binding::
 
     from bind import Request, API
