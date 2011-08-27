@@ -5,11 +5,23 @@ bind -- the core of the bind framework
 
 Copyright (c) 2011 Rafe Kettler
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in 
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies 
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 """
 
 import urlparse
@@ -25,7 +37,7 @@ class URLPattern(object):
     A section of a path can begin with a ':' to indicate a parameter in
     the URL. A parameter consumes characters until the next '/'. Patterns
     cannot be absolute paths, only relative."""
-    param_pattern = re.compile(r':(\w+)')
+    PARAM_PATTERN = re.compile(r':(\w+)')
 
     def __init__(self, pattern):
         self.pattern = pattern
@@ -42,7 +54,7 @@ class URLPattern(object):
         the parameter were ":foo"."""
         self.parameters = []
         for parameter in self.pattern.split('/'):
-            match = self.param_pattern.match(parameter)
+            match = self.PARAM_PATTERN.match(parameter)
             if match is None:
                 self.parameters.append((parameter, {"dynamic":False}))
             else:
@@ -83,7 +95,7 @@ class Request(object):
         self.base_url = base_url
         self.pattern = URLPattern(pattern)
         self.http = httplib2.Http()
-        self.method = "GET"
+        self.method = method
         # If request_callback or response_callback arguments were not supplied,
         # provide default callbacks that do nothing
         default_callback = lambda x, y: (x, y)
