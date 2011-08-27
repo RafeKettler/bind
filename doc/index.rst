@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 bind: a framework for creating web API bindings
-================================
+=================================================
 
 Contents:
 
