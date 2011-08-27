@@ -49,6 +49,33 @@ Finally, you can define methods and other attributes to your heart's content to 
 doesn't treat these attributes specially (or at all), so feel free to
 define any kind of attribute.
 
+Defining requests in your subclass of ``bind.API``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For each API call that you'd like to bind to (or for each request that
+you'd like the client to be able to make), you'll define a class
+attribute in your ``API`` subclass that is an instance of
+``bind.Request``. For example::
+
+    from bind import API, Request
+   
+    class MyAPI(API):
+        BASE_URL = "http://mysite.com/api"
+	get_user_info = Request("/users/:user", "GET")
+
+You'll notice a few important parameters that you've passed when
+instantiating ``bind.Request``. The first is a *URL pattern*. URL
+patterns are of the form "/path/:param/otherpath/day:param2/". A
+section of a path can begin with a ':' to indicate a parameter in the
+URL. A parameter consumes characters until the next '/'. Patterns
+cannot be absolute paths, only relative. Then, the next argument is
+the HTTP request method for that particular request. There are also a
+few other optional arguments: ``base_url``, which can override the
+class-level ``BASE_URL``, as well as ``request_callback`` and
+``response_callback``, which can override the class level
+``REQUEST_CALLBACK`` and ``RESPONSE_CALLBACK``, respectively.
+	
+
 Defining your own callbacks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
